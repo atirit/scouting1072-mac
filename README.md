@@ -7,7 +7,7 @@ To collect said data, use of the companion mobile app is highly recommended (unl
 ## Storage
 All data files, including CSVs and robot images, are stored at:
 
-~/Library/Containers/com.aydintiritoglu.scouting1072-mac/Data/Library/Application Support/com.aydintiritoglu.scouting1072-mac/
+    ~/Library/Containers/com.aydintiritoglu.scouting1072-mac/Data/Library/Application Support/com.aydintiritoglu.scouting1072-mac/
 
 `com.aydintiritoglu.scouting1072-mac` may be a different value depending on what you set the app's bundle ID to be.
 
