@@ -10,6 +10,15 @@ import Cocoa
 
 var commentsTableGlobal: NSTableView!
 
+extension String {
+    var width: CGFloat {
+        let field = NSTextField()
+        field.stringValue = self
+        field.sizeToFit()
+        return field.frame.width
+    }
+}
+
 class CommentsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet weak var tableView: NSTableView!
     
@@ -52,7 +61,14 @@ class CommentsViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 51.0
+        let cell = NSTextFieldCell(textCell: Array(comments[currentTeam]!.keys)[row])
+        cell.font = .systemFont(ofSize: 13.0)
+        cell.wraps = true
+        return cell.cellSize(forBounds: NSRect(x: tableView.tableColumns[0].width, y: 0, width: tableView.tableColumns[1].width, height: .greatestFiniteMagnitude)).height
+    }
+    
+    func tableViewColumnDidResize(_ notification: Notification) {
+        tableView.reloadData()
     }
     
     override func viewWillAppear() {
